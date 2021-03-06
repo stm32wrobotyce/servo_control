@@ -30,7 +30,7 @@ void servo_set_angle(uint8_t angle)
 
 	pwm_duty_us = SERVO_MIN_US + (angle * (SERVO_MAX_US - SERVO_MIN_US))/SERVO_MAX_ANGLE;
 
-	__HAL_TIM_SET_COMPARE(pwm_tim, pwm_channel, pwm_duty_ms);
+	__HAL_TIM_SET_COMPARE(pwm_tim, pwm_channel, pwm_duty_us);
 }
 
 void servo_set_speed(int speed)
@@ -44,5 +44,5 @@ void servo_set_speed(int speed)
 
 	pwm_duty_us = (SERVO_MAX_US + SERVO_MIN_US)/2 + (speed * (SERVO_MAX_US - SERVO_MIN_US)/2)/SERVO_MAX_SPEED;
 
-	__HAL_TIM_SET_COMPARE(pwm_tim, pwm_channel, pwm_duty_ms);
+	__HAL_TIM_SET_COMPARE(pwm_tim, pwm_channel, pwm_duty_us);
 }
